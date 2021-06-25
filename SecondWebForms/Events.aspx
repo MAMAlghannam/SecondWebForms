@@ -12,7 +12,7 @@
         <asp:Calendar ID="calendarMenu" runat="server" />
         <br />
 
-        <asp:Button ID="addBtn" Text="Add it!" runat="server" />
+        <asp:Button ID="addBtn" Text="Add it!" runat="server" OnClick="AddEvent" />
     </div>
 
     <div>
