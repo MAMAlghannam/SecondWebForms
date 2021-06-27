@@ -7,6 +7,8 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
+using System.Linq;
+using SecondWebForms.Models;
 
 namespace SecondWebForms
 {
@@ -75,6 +77,18 @@ namespace SecondWebForms
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+        }
+
+        protected void Unnamed_ClickNew(object sender, EventArgs e)
+        {
+
+        }
+
+        public void TestEntityFramework(object sender, EventArgs e)
+        {
+            var _db = new AppDbContext();
+            IQueryable<Color> query = _db.Color;
+            //return query;
         }
     }
 
