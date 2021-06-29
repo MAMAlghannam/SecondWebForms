@@ -32,31 +32,19 @@
             <th colspan="2" >Hex</th>
             <%--<th>&nbsp;</th>--%>
         </tr>
-        <tr>
-            <td>Red</td>
-            <td>rgb(255, 0, 0)</td>
-            <td style="background-color: red" >&nbsp;</td>
-        </tr>
-        <tr>
-            <td>Red</td>
-            <td>rgb(255, 0, 0)</td>
-            <td style="background-color: red" >&nbsp;</td>
-        </tr>
-        <tr>
-            <td>Red</td>
-            <td>rgb(255, 0, 0)</td>
-            <td style="background-color: red" >&nbsp;</td>
-        </tr>
-    </table>
+        <asp:ListView ID="ColorsList" ItemType="SecondWebForms.Models.Color" runat="server" SelectMethod="GetColors" >
+            <EmptyDataTemplate>
+                Nothing found
+            </EmptyDataTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td> <%#: Item.Color_Name %> </td>
+                    <td> <%#: Item.Color_Hex %> </td>
+                    <td style="background-color: #<%#: Item.Color_Hex %>" >  </td>
+                </tr>
+            </ItemTemplate>
+        </asp:ListView>
 
-    <asp:ListView ID="ColorsList" ItemType="SecondWebForms.Models.Color" runat="server" SelectMethod="GetColors" >
-        <EmptyDataTemplate>
-            Nothing found
-        </EmptyDataTemplate>
-        <ItemTemplate>
-           <b> <%#: Item.ToString()%> </b>
-        </ItemTemplate>
-        <ItemSeparatorTemplate> <div style="border: 1px solid lightgrey" ></div> </ItemSeparatorTemplate>
-    </asp:ListView>
+    </table>
 
 </asp:Content>
