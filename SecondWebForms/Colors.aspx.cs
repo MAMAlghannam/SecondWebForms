@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Web.Configuration;
+using System.Linq;
+using SecondWebForms.Models;
+using System.Data;
 
 namespace SecondWebForms
 {
@@ -20,13 +23,38 @@ namespace SecondWebForms
                 try
                 {
                     db.Open();
-                    ltMessage.Text = "Connected!";
+                    SqlCommand command = new SqlCommand("SELECT * FROM Color", db);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    DataSet dataSet = new DataSet();
+                    dataAdapter.Fill(dataSet);
+                    ltMessage.Text = "Connected! and, " + dataSet.Tables[0].Rows.Count;
+                    db.Close();
                 }
-                catch
+                catch(Exception err)
                 {
-                    ltMessage.Text = "Error happened";
+                    db.Close();
+                    ltMessage.Text = "Error: " + err.Message;
                 }
             }
         }
+
+        public IQueryable<Color> GetColors()
+        {
+            try
+            {
+                var _db = new SecondWebForms.Models.AppDbContext();
+                IQueryable<Color> query = _db.Color;
+                ltMessage.Text += " query.Count: " + query.Count();
+                return query;
+            }
+            catch
+            {
+                ltMessage.Text += " Error happened wth EntityFramework";
+            }
+
+            return null;
+
+        }
+
     }
 }

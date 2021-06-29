@@ -84,11 +84,11 @@ namespace SecondWebForms
 
         }
 
-        public void TestEntityFramework(object sender, EventArgs e)
+        public IQueryable<Color> TestEntityFramework(object sender, EventArgs e)
         {
             var _db = new AppDbContext();
             IQueryable<Color> query = _db.Color;
-            //return query;
+            return query;
         }
     }
 

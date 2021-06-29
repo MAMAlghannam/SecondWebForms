@@ -49,4 +49,14 @@
         </tr>
     </table>
 
+    <asp:ListView ID="ColorsList" ItemType="SecondWebForms.Models.Color" runat="server" SelectMethod="GetColors" >
+        <EmptyDataTemplate>
+            Nothing found
+        </EmptyDataTemplate>
+        <ItemTemplate>
+           <b> <%#: Item.ToString()%> </b>
+        </ItemTemplate>
+        <ItemSeparatorTemplate> <div style="border: 1px solid lightgrey" ></div> </ItemSeparatorTemplate>
+    </asp:ListView>
+
 </asp:Content>
