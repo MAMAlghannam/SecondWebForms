@@ -47,9 +47,9 @@ namespace SecondWebForms
                 ltMessage.Text += " query.Count: " + query.Count();
                 return query;
             }
-            catch
+            catch(Exception err)
             {
-                ltMessage.Text += " Error happened wth EntityFramework";
+                ltMessage.Text += " Error happened wth EntityFramework " + err.Message;
             }
 
             return null;

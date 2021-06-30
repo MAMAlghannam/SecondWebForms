@@ -7,7 +7,7 @@ using System.Web;
 
 namespace SecondWebForms.Models
 {
-    //[Table("Colors")]
+    [Table("Color")]
     public class Color
     {
         [Key]

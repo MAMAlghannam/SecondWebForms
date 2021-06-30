@@ -363,6 +363,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106301737137_InitialCreate.cs" />
+    <Compile Include="Migrations\202106301737137_InitialCreate.Designer.cs">
+      <DependentUpon>202106301737137_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -410,6 +415,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202106301737137_InitialCreate.resx">
+      <DependentUpon>202106301737137_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
