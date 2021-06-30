@@ -2,22 +2,13 @@
 
 <asp:Content ContentPlaceHolderID="ForCSS" runat="server" >
     <style>
-        table{
-            width: 50%
+        a{
+            padding: 5px
         }
-        th{
-            text-align: center;
+        a:hover{
+            background-color: lightgrey
         }
-        td{
-            padding: 5px;
-        }
-        table, th, td {
-            border: 1px solid grey;
-            border-collapse: collapse;
-        }
-        tr td:nth-child(3){
-            width: 30%;
-        }
+
     </style>
 </asp:Content>
 
@@ -26,25 +17,25 @@
 
     <asp:Literal ID="ltMessage" runat="server" />
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th colspan="2" >Hex</th>
-            <%--<th>&nbsp;</th>--%>
-        </tr>
+    <div style="width: 50%;border: 1px solid black;padding: 0" >
+        <div style="display: flex;background-color: deepskyblue" >
+            <div style="flex: 1;color: white;font-weight: bold" >Name</div>
+            <div style="flex: 2;color: white;font-weight: bold" >Hex</div>
+        </div>
+        
         <asp:ListView ID="ColorsList" ItemType="SecondWebForms.Models.Color" runat="server" SelectMethod="GetColors" >
             <EmptyDataTemplate>
                 Nothing found
             </EmptyDataTemplate>
             <ItemTemplate>
-                <tr>
-                    <td> <%#: Item.Color_Name %> </td>
-                    <td> <%#: Item.Color_Hex %> </td>
-                    <td style="background-color: #<%#: Item.Color_Hex %>" >  </td>
-                </tr>
+                <a href="?id=<%#: Item.Color_Id %>" style="display: flex;" >
+                    <div style="flex: 1" ><%#: Item.Color_Name %></div>
+                    <div style="flex: 1" ><%#: Item.Color_Hex %></div>
+                    <div style="flex: 1;background-color: #<%#: Item.Color_Hex %>" > </div>
+                </a>
             </ItemTemplate>
         </asp:ListView>
 
-    </table>
+    </div>
 
 </asp:Content>
