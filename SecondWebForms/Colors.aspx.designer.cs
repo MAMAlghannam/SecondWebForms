@@ -24,13 +24,13 @@ namespace SecondWebForms
         protected global::System.Web.UI.WebControls.Panel pnlCalendar;
 
         /// <summary>
-        /// c1 control.
+        /// up1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar c1;
+        protected global::System.Web.UI.UpdatePanel up1;
 
         /// <summary>
         /// tbDeparture control.
@@ -51,13 +51,49 @@ namespace SecondWebForms
         protected global::System.Web.UI.WebControls.TextBox tbReturn;
 
         /// <summary>
-        /// mpe control.
+        /// calendars control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender mpe;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl calendars;
+
+        /// <summary>
+        /// calendarContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl calendarContainer;
+
+        /// <summary>
+        /// c1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar c1;
+
+        /// <summary>
+        /// calendarContainer2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl calendarContainer2;
+
+        /// <summary>
+        /// c2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar c2;
 
         /// <summary>
         /// ltMessage control.

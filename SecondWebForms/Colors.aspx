@@ -17,19 +17,27 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
     <%--<asp:ScriptManager ID="asm" runat="server" />--%>
     <asp:Panel ID="pnlCalendar" runat="server">
-        <%--<asp:UpdatePanel ID="up1" runat="server">
-            <ContentTemplate>--%>
-                 <asp:Calendar ID="c1" runat="server" />
-            <%--</ContentTemplate>--%>
-<%--        </asp:UpdatePanel>--%>
+        <asp:UpdatePanel ID="up1" runat="server">
+            <ContentTemplate>
+                <div>
+                    Departure date: <asp:TextBox ID="tbDeparture" runat="server" ReadOnly="true" />
+                    Return date: <asp:TextBox ID="tbReturn" runat="server" ReadOnly="true" />
+                </div>
+                <div runat="server" ID="calendars" style="display: flex;background-color: deepskyblue;padding: 5px;"> 
+                    <div runat="server" ID="calendarContainer"> 
+                        Departure: <br />
+                        <asp:Calendar ID="c1" runat="server" OnSelectionChanged="c1_SelectionChangedDeparture" BackColor="white" Width="300px" />
+                    </div>
+                    <div runat="server" ID="calendarContainer2" style="margin-left: 15px"> 
+                        Return: <br />
+                        <asp:Calendar ID="c2" runat="server" OnSelectionChanged="c1_SelectionChangedReturn" BackColor="white" Width="300px" />
+                    </div>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </asp:Panel>
 
-    <div>
-        Departure date: <asp:TextBox ID="tbDeparture" runat="server" />
-        Return date: <asp:TextBox ID="tbReturn" runat="server" />
-    </div>
-
-    <ajaxToolkit:ModalPopupExtender ID="mpe" runat="server" TargetControlId="tbDeparture"  PopupControlID="pnlCalendar"  />
+    <%--<ajaxToolkit:ModalPopupExtender ID="mpe" runat="server" TargetControlId="tbDeparture"  PopupControlID="pnlCalendar"  />--%>
     
     <h2> <%: Title %> </h2>
 

@@ -56,5 +56,14 @@ namespace SecondWebForms
 
         }
 
+        protected void c1_SelectionChangedDeparture(object sender, EventArgs e)
+        {
+            tbDeparture.Text = c1.SelectedDate.ToString().Substring(0, 10);
+        }
+
+        protected void c1_SelectionChangedReturn(object sender, EventArgs e)
+        {
+            tbReturn.Text = c2.SelectedDate.ToString().Substring(0, 10);
+        }
     }
 }
