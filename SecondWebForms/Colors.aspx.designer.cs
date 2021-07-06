@@ -105,13 +105,13 @@ namespace SecondWebForms
         protected global::System.Web.UI.WebControls.Literal ltMessage;
 
         /// <summary>
-        /// firstPanel control.
+        /// up2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel firstPanel;
+        protected global::System.Web.UI.UpdatePanel up2;
 
         /// <summary>
         /// ColorsList control.

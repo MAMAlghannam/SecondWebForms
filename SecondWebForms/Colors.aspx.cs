@@ -65,5 +65,10 @@ namespace SecondWebForms
         {
             tbReturn.Text = c2.SelectedDate.ToString().Substring(0, 10);
         }
+
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

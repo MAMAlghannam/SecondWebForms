@@ -16,7 +16,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
     <%--<asp:ScriptManager ID="asm" runat="server" />--%>
-    <asp:Panel ID="pnlCalendar" runat="server">
+   <asp:Panel ID="pnlCalendar" runat="server">
         <asp:UpdatePanel ID="up1" runat="server">
             <ContentTemplate>
                 <div>
@@ -43,9 +43,7 @@
 
     <asp:Literal ID="ltMessage" runat="server" />
 
-    <asp:Panel runat="server" ID="firstPanel" >
-        test panel
-    </asp:Panel>
+    
 
     <div style="width: 50%;border: 1px solid black;padding: 0" >
         <div style="display: flex;background-color: deepskyblue" >
@@ -53,18 +51,22 @@
             <div style="flex: 2;color: white;font-weight: bold" >Hex</div>
         </div>
         
+        <asp:UpdatePanel ID="up2" runat="server">
+        <ContentTemplate>
         <asp:ListView ID="ColorsList" ItemType="SecondWebForms.Models.Color" runat="server" SelectMethod="GetColors" >
             <EmptyDataTemplate>
                 Nothing found
             </EmptyDataTemplate>
             <ItemTemplate>
-                <a href="?id=<%#: Item.Color_Id %>" style="display: flex;" >
+                <asp:LinkButton runat="server" OnClick="Unnamed_Click" CommandArgument="<%#: Item.Color_Id %>" style="display: flex;" >
                     <div style="flex: 1" ><%#: Item.Color_Name %></div>
                     <div style="flex: 1" ><%#: Item.Color_Hex %></div>
                     <div style="flex: 1;background-color: #<%#: Item.Color_Hex %>" > </div>
-                </a>
+                </asp:LinkButton>
             </ItemTemplate>
         </asp:ListView>
+        </ContentTemplate>
+      </asp:UpdatePanel>
 
     </div>
 

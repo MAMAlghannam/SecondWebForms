@@ -8,6 +8,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using SecondWebForms.Models;
+using System.Web.Http;
 
 namespace SecondWebForms
 {
@@ -21,6 +22,12 @@ namespace SecondWebForms
 
             // to solve the The => model backing the 'AppDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
             Database.SetInitializer<AppDbContext>(null);
+
+            RouteTable.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = System.Web.Http.RouteParameter.Optional }
+            );
 
         }
     }
