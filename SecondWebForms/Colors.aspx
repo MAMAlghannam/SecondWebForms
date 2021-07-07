@@ -16,6 +16,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
     <%--<asp:ScriptManager ID="asm" runat="server" />--%>
+    <%-- testing stash ?? --%>
    <asp:Panel ID="pnlCalendar" runat="server">
         <asp:UpdatePanel ID="up1" runat="server">
             <ContentTemplate>
