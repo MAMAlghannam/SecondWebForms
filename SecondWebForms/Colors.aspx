@@ -17,7 +17,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
     <%--<asp:ScriptManager ID="asm" runat="server" />--%>
     <%-- testing stash ?? --%>
-   <asp:Panel ID="pnlCalendar" runat="server">
+   <%--<asp:Panel ID="pnlCalendar" runat="server">
         <asp:UpdatePanel ID="up1" runat="server">
             <ContentTemplate>
                 <div>
@@ -36,11 +36,46 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
-    </asp:Panel>
+    </asp:Panel>--%>
 
     <%--<ajaxToolkit:ModalPopupExtender ID="mpe" runat="server" TargetControlId="tbDeparture"  PopupControlID="pnlCalendar"  />--%>
     
     <h2> <%: Title %> </h2>
+        <asp:UpdatePanel ID="up2" runat="server">
+        <ContentTemplate>
+
+    <div style="display:flex;justify-content: space-between; width: 20%" >
+        <asp:DropDownList 
+            runat="server" 
+            ID="CitiesList" 
+            SelectMethod="GetCities"
+            ItemType="SecondWebForms.Models.City" 
+            DataValueField="City_Id"
+            DataTextField="City_Name"
+            AutoPostBack="True"
+            OnSelectedIndexChanged="GetDistricts"
+        >
+            <asp:ListItem>Choose a city</asp:ListItem>
+        </asp:DropDownList>
+        <asp:UpdateProgress runat="server" DisplayAfter="1" >
+            <ProgressTemplate>
+                Loading...
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+        <asp:Panel runat="server" ID="IsLoading" Visible="false">
+            <span>Loading...</span>
+        </asp:Panel>
+        <asp:DropDownList 
+            runat="server" 
+            ID="DistrictsList"
+            ItemType="SecondWebForms.Models.District" 
+            DataValueField="District_Id"
+            DataTextField="District_Name"
+            Enabled="false"
+        >
+            <asp:ListItem>Choose a districts</asp:ListItem>
+        </asp:DropDownList>
+    </div>
 
     <asp:Literal ID="ltMessage" runat="server" />
 
@@ -52,23 +87,21 @@
             <div style="flex: 2;color: white;font-weight: bold" >Hex</div>
         </div>
         
-        <asp:UpdatePanel ID="up2" runat="server">
-        <ContentTemplate>
         <asp:ListView ID="ColorsList" ItemType="SecondWebForms.Models.Color" runat="server" SelectMethod="GetColors" >
             <EmptyDataTemplate>
                 Nothing found
             </EmptyDataTemplate>
             <ItemTemplate>
-                <asp:LinkButton runat="server" OnClick="Unnamed_Click" CommandArgument="<%#: Item.Color_Id %>" style="display: flex;" >
+                <asp:LinkButton runat="server" CommandArgument="<%#: Item.Color_Id %>" style="display: flex;" >
                     <div style="flex: 1" ><%#: Item.Color_Name %></div>
                     <div style="flex: 1" ><%#: Item.Color_Hex %></div>
                     <div style="flex: 1;background-color: #<%#: Item.Color_Hex %>" > </div>
                 </asp:LinkButton>
             </ItemTemplate>
         </asp:ListView>
-        </ContentTemplate>
-      </asp:UpdatePanel>
 
     </div>
+        </ContentTemplate>
+      </asp:UpdatePanel>
 
 </asp:Content>

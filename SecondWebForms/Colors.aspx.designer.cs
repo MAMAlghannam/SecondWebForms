@@ -15,85 +15,40 @@ namespace SecondWebForms
     {
 
         /// <summary>
-        /// pnlCalendar control.
+        /// up2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlCalendar;
+        protected global::System.Web.UI.UpdatePanel up2;
 
         /// <summary>
-        /// up1 control.
+        /// CitiesList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel up1;
+        protected global::System.Web.UI.WebControls.DropDownList CitiesList;
 
         /// <summary>
-        /// tbDeparture control.
+        /// IsLoading control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbDeparture;
+        protected global::System.Web.UI.WebControls.Panel IsLoading;
 
         /// <summary>
-        /// tbReturn control.
+        /// DistrictsList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbReturn;
-
-        /// <summary>
-        /// calendars control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl calendars;
-
-        /// <summary>
-        /// calendarContainer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl calendarContainer;
-
-        /// <summary>
-        /// c1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar c1;
-
-        /// <summary>
-        /// calendarContainer2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl calendarContainer2;
-
-        /// <summary>
-        /// c2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar c2;
+        protected global::System.Web.UI.WebControls.DropDownList DistrictsList;
 
         /// <summary>
         /// ltMessage control.
@@ -103,15 +58,6 @@ namespace SecondWebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltMessage;
-
-        /// <summary>
-        /// up2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel up2;
 
         /// <summary>
         /// ColorsList control.
