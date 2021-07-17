@@ -14,9 +14,15 @@ namespace SecondWebForms
 {
     public partial class YelpAPI : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             selectedItems.Text += CategoriesList.SelectedIndex;
+            if (!IsPostBack)
+            {
+                //CategoriesDataSource. = GetCategories();
+                //CategoriesDataSource.DataBind();
+            }
         }
 
         public List<Category> GetCategories()
@@ -38,6 +44,18 @@ namespace SecondWebForms
                 //messageText.Text = "Error with request " + exc;
                 return null;
             }
+        }
+
+        protected void ItemSelecting(object sender, ListViewSelectEventArgs e)
+        {
+            //CategoriesList.SelectedIndex = e.NewSelectedIndex;
+            //CategoriesList.DataSource = CategoriesList.Items.;
+            //CategoriesList.DataBind();
+        }
+
+        protected void ItemSelected(object sender, EventArgs e)
+        {
+
         }
 
     }
