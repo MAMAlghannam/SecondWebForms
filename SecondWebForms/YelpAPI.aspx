@@ -5,9 +5,9 @@
         .scrollable {
             overflow: hidden;
             overflow-y: scroll;
-            height: 350px;
-            width: 250px;
-            border: 1px solid black;
+            /*height: 350px;
+            width: 250px;*/
+            border: 3px solid lightgrey;
             border-radius: 8px;
         }
 
@@ -39,12 +39,24 @@
         }
 
         .listContainer input {
-            padding: 5px
+            padding: 5px;
+            text-align: left;
+            border: none;
+            background-color: white;
+            padding-left: 5px;
+            margin: 3px
         }
 
         .listContainer input:hover {
-            background-color: lightgreen
+            background-color: rgb(218 218 218);
+            text-decoration-style: solid;
         }
+
+        .listContainer input.selected {
+            background-color: rgb(214 212 212);
+            border-radius: 4px;
+        }
+
     </style>
 
 </asp:Content>
@@ -67,44 +79,52 @@
             selecting... 
         </ProgressTemplate>
     </asp:UpdateProgress>--%>
+    <div style="display: flex;max-height: 500px" >
+        <div class="scrollable" style="width: 30%">
+            <asp:UpdatePanel runat="server" ID="up1" class="listContainer">
+                <ContentTemplate>
+                     <asp:ObjectDataSource
+                        ID="CategoriesDataSource"
+                        runat="server"
+                        EnableCaching="true"
+                        SelectMethod="GetCategories"
+                        TypeName="SecondWebForms.YelpAPI"
+                    />
+                    <asp:ListView
+                        ID="CategoriesList"
+                        runat="server"
+                        ItemType="SecondWebForms.Models.Category"
+                        DataSourceID="CategoriesDataSource"
+                        OnSelectedIndexChanged="ItemSelected"
+                    >
+                        <ItemTemplate>
+                            <asp:Button
+                                ID="SelectButton"
+                                runat="server"
+                                CommandArgument="<%#: Item.Alias %>"
+                                CommandName="Select"
+                                Text="<%#: Item.Title %>"
+                                class="catBtn"
+                            />
+                        </ItemTemplate>
+                        <SelectedItemTemplate>
+                            <asp:Button
+                                ID="SelectButton"
+                                runat="server"
+                                CommandArgument="<%#: Item.Alias %>"
+                                CommandName="Select"
+                                Text="<%#: Item.Title %>"
+                                class="selected"
+                            />
+                        </SelectedItemTemplate>
+                    </asp:ListView>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+        <div style="flex: 1;border: 1px solid yellow" >
 
-    <div class="scrollable">
-        <asp:UpdatePanel runat="server" ID="up1" class="listContainer">
-            <ContentTemplate>
-                 <asp:ObjectDataSource
-                    ID="CategoriesDataSource"
-                    runat="server"
-                    EnableCaching="true"
-                    SelectMethod="GetCategories"
-                    TypeName="SecondWebForms.YelpAPI"
-                />
-                <asp:ListView
-                    ID="CategoriesList"
-                    runat="server"
-                    ItemType="SecondWebForms.Models.Category"
-                    DataSourceID="CategoriesDataSource"
-                    OnSelectedIndexChanged="ItemSelected"
-                >
-                    <ItemTemplate>
-                        <%--<asp:Button
-                            ID="SelectButton"
-                            runat="server"
-                            CommandArgument="<%#: Item.Alias %>"
-                            CommandName="Select"
-                            Text="<%#: Item.Title %>" 
-                        />--%>
-                        <asp:LinkButton runat="server" CommandName="Select" >
-                             <%#: Item.Title %>
-                        </asp:LinkButton>
-                    </ItemTemplate>
-                    <SelectedItemTemplate>
-                        <asp:Label runat="server" ID="SelectedItem" Text="<%#: Item.Title %>" />
-                    </SelectedItemTemplate>
-                </asp:ListView>
-            </ContentTemplate>
-        </asp:UpdatePanel>
+        </div>
     </div>
-
     <script>
 
         function setAsActive(e) {
