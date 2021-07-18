@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using SecondWebForms.Models;
+using SecondWebForms.Models.Yelp;
 
 namespace SecondWebForms
 {
@@ -55,6 +55,18 @@ namespace SecondWebForms
 
         protected void ItemSelected(object sender, EventArgs e)
         {
+            string selectedCategory = CategoriesList.SelectedValue.ToString();
+            HttpWebRequest request = (HttpWebRequest) WebRequest.Create($"https://api.yelp.com/v3/businesses/search?location=NYC&categories={selectedCategory}");
+            request.Headers.Add("Authorization", "Bearer ODhDW-tWOd7Uo0-lpyIV1nWzLQmRHqjH5hYR18QfKM4qco7GSIhWpuValltHQZCm-KGgVYRRn8YktfFosXauGwfpYYBd9i6ZbgD4_ebFoIQj7I5tnfLktAhG4IPqYHYx");
+            HttpWebResponse response = (HttpWebResponse) request.GetResponse();
+            StreamReader dataStream = new StreamReader(response.GetResponseStream());
+            string responseText = dataStream.ReadToEnd();
+
+            JObject obj = JObject.Parse(responseText);
+            List<BusinessInfo> list = JsonConvert.DeserializeObject<List<BusinessInfo>>(obj["businesses"].ToString());
+
+            SelectedBusinessInfo.DataSource = list;
+            SelectedBusinessInfo.DataBind();
 
         }
 

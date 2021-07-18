@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SecondWebForms.Models
+namespace SecondWebForms.Models.Yelp
 {
     public class Category
     {

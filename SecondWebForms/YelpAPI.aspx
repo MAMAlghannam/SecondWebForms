@@ -4,7 +4,7 @@
     <style>
         .scrollable {
             overflow: hidden;
-            overflow-y: scroll;
+            overflow-y: auto;
             /*height: 350px;
             width: 250px;*/
             border: 3px solid lightgrey;
@@ -38,25 +38,55 @@
             background: #555;
         }
 
-        .listContainer input {
-            padding: 5px;
-            text-align: left;
-            border: none;
-            background-color: white;
-            padding-left: 5px;
-            margin: 3px
+        .listContainer ul {
+            list-style-type: "⏵";
+            color: rgb(12, 67, 114)
         }
 
-        .listContainer input:hover {
-            background-color: rgb(218 218 218);
-            text-decoration-style: solid;
-        }
-
-        .listContainer input.selected {
-            background-color: rgb(214 212 212);
+        .listContainer li {
+            border: 3px solid rgba(214, 212, 212, 0);
             border-radius: 4px;
         }
 
+        .listContainer li:hover {
+            background-color: rgb(218, 218, 218);
+            text-decoration-style: solid;
+        }
+
+        .listContainer li.selected {
+            background-color: rgba(214, 212, 212, 0.3);
+            border: 3px solid rgb(214, 212, 212);
+            border-radius: 4px;
+        }
+
+        .listContainer input {
+            width: 100%;
+            padding: 3px;
+            text-align: left;
+            border: none;
+            background: none;
+            padding-left: 5px;
+            margin: 3px;
+        }
+
+        .business-info-container {
+            display: flex;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+            transition: 0.3s;
+            padding: 2px;
+        }
+
+        .business-info-container:hover {
+            background-color: rgba(0, 0, 0, 0.05)
+        }
+
+        .business-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            /*justify-content: center;*/
+            padding: 0px 0px 0px 15px;
+        }
     </style>
 
 </asp:Content>
@@ -74,63 +104,93 @@
 
     <asp:Literal runat="server" ID="selectedItems" />
 
-    <%--<asp:UpdateProgress runat="server" DisplayAfter="1">
-        <ProgressTemplate>
-            selecting... 
-        </ProgressTemplate>
-    </asp:UpdateProgress>--%>
-    <div style="display: flex;max-height: 500px" >
+    <div style="display: flex; max-height: 500px">
         <div class="scrollable" style="width: 30%">
             <asp:UpdatePanel runat="server" ID="up1" class="listContainer">
                 <ContentTemplate>
-                     <asp:ObjectDataSource
+                    <asp:ObjectDataSource
                         ID="CategoriesDataSource"
                         runat="server"
                         EnableCaching="true"
                         SelectMethod="GetCategories"
-                        TypeName="SecondWebForms.YelpAPI"
-                    />
-                    <asp:ListView
-                        ID="CategoriesList"
-                        runat="server"
-                        ItemType="SecondWebForms.Models.Category"
-                        DataSourceID="CategoriesDataSource"
-                        OnSelectedIndexChanged="ItemSelected"
-                    >
-                        <ItemTemplate>
-                            <asp:Button
-                                ID="SelectButton"
-                                runat="server"
-                                CommandArgument="<%#: Item.Alias %>"
-                                CommandName="Select"
-                                Text="<%#: Item.Title %>"
-                                class="catBtn"
-                            />
-                        </ItemTemplate>
-                        <SelectedItemTemplate>
-                            <asp:Button
-                                ID="SelectButton"
-                                runat="server"
-                                CommandArgument="<%#: Item.Alias %>"
-                                CommandName="Select"
-                                Text="<%#: Item.Title %>"
-                                class="selected"
-                            />
-                        </SelectedItemTemplate>
-                    </asp:ListView>
+                        TypeName="SecondWebForms.YelpAPI" />
+                    <ul>
+                        <asp:ListView
+                            ID="CategoriesList"
+                            runat="server"
+                            ItemType="SecondWebForms.Models.Yelp.Category"
+                            DataKeyNames="Alias"
+                            DataSourceID="CategoriesDataSource"
+                            OnSelectedIndexChanged="ItemSelected">
+                            <ItemTemplate>
+                                <li>
+                                    <asp:Button
+                                        ID="SelectButton"
+                                        runat="server"
+                                        CommandArgument="<%#: Item.Alias %>"
+                                        CommandName="Select"
+                                        Text="<%#: Item.Title %>" 
+                                    />
+                                </li>
+                            </ItemTemplate>
+                            <SelectedItemTemplate>
+                                <li class="selected">
+                                    <asp:Button
+                                        ID="SelectButton"
+                                        runat="server"
+                                        CommandArgument="<%#: Item.Alias %>"
+                                        CommandName="Select"
+                                        Text="<%#: Item.Title %>"
+                                        Enabled="false" 
+                                    />
+                                </li>
+                            </SelectedItemTemplate>
+                        </asp:ListView>
+                    </ul>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <div style="flex: 1;border: 1px solid yellow" >
 
-        </div>
+            <asp:UpdatePanel runat="server" ID="up_businessInfo" style="display: flex; margin: 1px; position: relative; flex: 1;">
+                <ContentTemplate>
+                    <div class="scrollable" style="padding: 8px; flex: 1">
+                        <asp:ListView
+                            runat="server"
+                            ID="SelectedBusinessInfo"
+                            ItemType="SecondWebForms.Models.Yelp.BusinessInfo"
+                        >
+                            <ItemTemplate>
+                                <div class="business-info-container">
+                                    <div style="width: 200px; height: 200px;" >
+                                        <img src="<%#: Item.Image_Url %>" alt="this image for <%#: Item.Name %>" style="width: 200px; height: 200px; object-fit: contain" />
+                                    </div>
+                                    <div class="business-info">
+                                        <h4 style="font-weight: bold"><%#: Item.Name %></h4>
+                                        <small><%#: Item.Price %></small>
+                                        <span style="color: goldenrod">★★★★★  <%#: Item.Rating %>
+                                            <b style="color: grey">| </b>
+                                            <small style="color: grey"><%#: Item.Review_Count %></small>
+                                        </span>
+                                        <h6><i><%#: Item.Location.DisplayAddress() %></i></h6>
+                                        <a href="<%#: Item.Url %>" target="_blank" style="align-self: flex-start">Visit ></a>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                            <EmptyItemTemplate>
+                                <h3>Nothing found ! </h3>
+                            </EmptyItemTemplate>
+                        </asp:ListView>
+
+                        <asp:UpdateProgress runat="server" DisplayAfter="1">
+                            <ProgressTemplate>
+                                <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%; position: absolute; top: 0; right: 0; background: rgba(0, 0, 0, 0.5)">
+                                    <h1 style="color: white">Fetching...</h1>
+                                </div>
+                            </ProgressTemplate>
+                        </asp:UpdateProgress>
+
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
     </div>
-    <script>
-
-        function setAsActive(e) {
-            e.target.classList.add("selected-item")
-        }
-
-    </script>
-
 </asp:Content>
