@@ -48,7 +48,7 @@ namespace SecondWebForms
             try
             {
                 var _db = new SecondWebForms.Models.AppDbContext();
-                IQueryable<Color> query = _db.Color;
+                IQueryable<Color> query = _db.Colors;
                 ltMessage.Text += " query.Count: " + query.Count();
                 return query;
             }

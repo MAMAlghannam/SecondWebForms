@@ -419,6 +419,7 @@
       <DependentUpon>202106301737137_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Yelp\BusinessInfo.cs" />
     <Compile Include="Models\Yelp\Category.cs" />
     <Compile Include="Models\City.cs" />
@@ -467,6 +468,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\AuthModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
