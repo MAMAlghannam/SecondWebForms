@@ -20,7 +20,7 @@ namespace SecondWebForms.Account
         protected void Reset_Click(object sender, EventArgs e)
         {
             string code = IdentityHelper.GetCodeFromRequest(Request);
-            if (code != null)
+            if (code != null || true)
             {
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
