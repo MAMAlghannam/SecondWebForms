@@ -217,7 +217,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Account\Web.config" />
-    <Content Include="Colors.aspx" />
+    <Content Include="Pages\Colors.aspx" />
     <Content Include="Content\bootstrap-5.0.2\bootstrap-grid.css.map" />
     <Content Include="Content\bootstrap-5.0.2\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-5.0.2\bootstrap-grid.rtl.css.map" />
@@ -234,6 +234,7 @@
     <Content Include="Content\bootstrap-5.0.2\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap-5.0.2\bootstrap.rtl.css.map" />
     <Content Include="Content\bootstrap-5.0.2\bootstrap.rtl.min.css.map" />
+    <Content Include="Pages\Web.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -243,7 +244,7 @@
     <Content Include="Scripts\jquery-3.6.0.min.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
-    <Content Include="YelpAPI.aspx" />
+    <Content Include="Pages\YelpAPI.aspx" />
     <Content Include="Scripts\bootstrap-5.0.2\bootstrap.js" />
     <Content Include="Scripts\bootstrap-5.0.2\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -460,18 +461,18 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Colors.aspx.cs">
+    <Compile Include="Pages\Colors.aspx.cs">
       <DependentUpon>Colors.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Colors.aspx.designer.cs">
+    <Compile Include="Pages\Colors.aspx.designer.cs">
       <DependentUpon>Colors.aspx</DependentUpon>
     </Compile>
-    <Compile Include="YelpAPI.aspx.cs">
+    <Compile Include="Pages\YelpAPI.aspx.cs">
       <DependentUpon>YelpAPI.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="YelpAPI.aspx.designer.cs">
+    <Compile Include="Pages\YelpAPI.aspx.designer.cs">
       <DependentUpon>YelpAPI.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
