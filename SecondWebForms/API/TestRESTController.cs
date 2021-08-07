@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using SecondWebForms.Models.Yelp;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -9,31 +13,54 @@ namespace SecondWebForms.API
 {
     public class TestRESTController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        [HttpGet]
+        public List<Category> Categories()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://api.yelp.com/v3/categories");
+                request.Headers.Add("Authorization", "Bearer ODhDW-tWOd7Uo0-lpyIV1nWzLQmRHqjH5hYR18QfKM4qco7GSIhWpuValltHQZCm-KGgVYRRn8YktfFosXauGwfpYYBd9i6ZbgD4_ebFoIQj7I5tnfLktAhG4IPqYHYx");
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader dataStream = new StreamReader(response.GetResponseStream());
+                string responseText = dataStream.ReadToEnd();
+
+                JObject obj = JObject.Parse(responseText);
+                List<Category> categories = JsonConvert.DeserializeObject<List<Category>>(obj["categories"].ToString());
+                return categories;
+            }
+            catch
+            {
+                //messageText.Text = "Error with request " + exc;
+                return new List<Category>();
+            }
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        [HttpGet]
+        public List<BusinessInfo> GetBusinessByCategory(string id)
         {
-            return "value";
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"https://api.yelp.com/v3/businesses/search?location=NYC&categories={id}");
+                request.Headers.Add("Authorization", "Bearer ODhDW-tWOd7Uo0-lpyIV1nWzLQmRHqjH5hYR18QfKM4qco7GSIhWpuValltHQZCm-KGgVYRRn8YktfFosXauGwfpYYBd9i6ZbgD4_ebFoIQj7I5tnfLktAhG4IPqYHYx");
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader dataStream = new StreamReader(response.GetResponseStream());
+                string responseText = dataStream.ReadToEnd();
+
+                JObject obj = JObject.Parse(responseText);
+                List<BusinessInfo> list = JsonConvert.DeserializeObject<List<BusinessInfo>>(obj["businesses"].ToString());
+
+                return list;
+            }
+            catch
+            {
+                return new List<BusinessInfo>();
+            }
         }
 
-        // POST api/<controller>
-        public void Post([FromBody] string value)
+        public int GetNumber(int id)
         {
+            return id;
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
     }
 }

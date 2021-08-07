@@ -14,10 +14,10 @@ namespace SecondWebForms.Models.Yelp
         public string Zip_Code { get; set; }
         public string Country { get; set; }
         public string State { get; set; }
-
-        public string DisplayAddress()
-        {
-            return City + ", " + State + " " + Zip_Code;
+        public string DisplayAddress 
+        { 
+            get { return City + ", " + State + " " + Zip_Code;  } 
+            set { DisplayAddress = value; } 
         }
 
     }

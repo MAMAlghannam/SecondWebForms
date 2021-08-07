@@ -60,6 +60,7 @@
                         <li><a runat="server" href="~/Events">Events</a></li>
                         <li><a runat="server" href="~/Pages/Colors">Colors</a></li>
                         <li><a runat="server" href="~/Pages/YelpAPI">YelpAPI</a></li>
+                        <li><a runat="server" href="~/Pages/YelpAPI_React">YelpAPI React</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>

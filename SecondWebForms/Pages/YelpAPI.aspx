@@ -171,7 +171,7 @@
                                             <b style="color: grey">| </b>
                                             <small style="color: grey"><%#: Item.Review_Count %></small>
                                         </span>
-                                        <h6><i><%#: Item.Location.DisplayAddress() %></i></h6>
+                                        <h6><i><%#: Item.Location.DisplayAddress %></i></h6>
                                         <a href="<%#: Item.Url %>" target="_blank" style="align-self: flex-start">Visit ></a>
                                     </div>
                                 </div>
