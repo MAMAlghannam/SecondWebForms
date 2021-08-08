@@ -73,10 +73,12 @@
     <div id="Yelp-API-Explorer-Container" style="padding: 15px" ></div>
 
     <%--<script src="../Scripts/React/react_runner/react.production.min.js"></script>--%>
-    <script src="../Scripts/React/react_runner/react.development.js"></script>
     <%--<script src="../Scripts/react/react_runner/react-dom.production.min.js"></script>--%>
+    <script src="../Scripts/React/react_runner/react.development.js"></script>
     <script src="../Scripts/React/react_runner/react-dom.development.js"></script>
 
-    <script src="../Scripts/React/YelpAPIExplorer.js"></script>
+    <%: Scripts.Render("~/Scripts/React_JSX/YelpAPIExplorer.jsx") %>
+
+    <%--<script src="../Scripts/React/YelpAPIExplorer.js"></script>--%>
 
 </asp:Content>
