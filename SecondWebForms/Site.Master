@@ -60,8 +60,13 @@
                         <li><a runat="server" href="~/Events">Events</a></li>
                         <li><a runat="server" href="~/Pages/Colors">Colors</a></li>
                         <li><a runat="server" href="~/Pages/YelpAPI">YelpAPI</a></li>
-                        <li><a runat="server" href="~/Pages/YelpAPI_React">YelpAPI <img src="~/Content/Images/reactjs-icon.svg" /></a></li>
+                        <li><a runat="server" href="~/Pages/YelpAPI_React">
+                            YelpAPI
+
+                            <img src="<%: Scripts.Url("~/Content/Images/reactjs-icon.svg") %>" width="20" height="20" />
+                        </a></li>
                     </ul>
+
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
