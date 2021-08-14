@@ -14,10 +14,16 @@ namespace SecondWebForms.API
     public class TestRESTController : ApiController
     {
         [HttpGet]
+        [Authorize]
         public List<Category> Categories()
         {
+            // .ASPXFORMSDEMO
+            //var token = Request.Headers.GetCookies()[0].Cookies.Where(e => e.Name == "myCustomCookie").FirstOrDefault();
+            //if(token == null)
+            //    throw new HttpResponseException(HttpStatusCode.Unauthorized);
             try
             {
+
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://api.yelp.com/v3/categories");
                 request.Headers.Add("Authorization", "Bearer ODhDW-tWOd7Uo0-lpyIV1nWzLQmRHqjH5hYR18QfKM4qco7GSIhWpuValltHQZCm-KGgVYRRn8YktfFosXauGwfpYYBd9i6ZbgD4_ebFoIQj7I5tnfLktAhG4IPqYHYx");
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -36,10 +42,16 @@ namespace SecondWebForms.API
         }
 
         [HttpGet]
+        [Authorize]
         public List<BusinessInfo> GetBusinessByCategory(string id)
         {
+            // .ASPXFORMSDEMO
+            var token = Request.Headers.GetCookies()[0].Cookies.Where(e => e.Name == ".ASPXFORMSDEMO").FirstOrDefault();
+            if (token == null)
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
             try
             {
+
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"https://api.yelp.com/v3/businesses/search?location=NYC&categories={id}");
                 request.Headers.Add("Authorization", "Bearer ODhDW-tWOd7Uo0-lpyIV1nWzLQmRHqjH5hYR18QfKM4qco7GSIhWpuValltHQZCm-KGgVYRRn8YktfFosXauGwfpYYBd9i6ZbgD4_ebFoIQj7I5tnfLktAhG4IPqYHYx");
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();

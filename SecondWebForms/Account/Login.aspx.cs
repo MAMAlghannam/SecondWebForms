@@ -6,6 +6,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using SecondWebForms.Models;
 using System.Web.Security;
+using JWT.Builder;
+using JWT.Algorithms;
 
 namespace SecondWebForms.Account
 {
@@ -29,6 +31,20 @@ namespace SecondWebForms.Account
 
             if(FormsAuthentication.Authenticate(Email.Text, Password.Text))
             {
+                var token = JwtBuilder.Create()
+                            .WithAlgorithm(new HMACSHA256Algorithm())
+                            .WithSecret("MySercretKey_;)")
+                            .MustVerifySignature()
+                            .AddClaim("exp", DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeMilliseconds())
+                            .AddClaim("secondClaim", "secondClaim Value")
+                            .Encode();
+                HttpCookie tokenCookie = new HttpCookie("myCustomCookie", token)
+                {
+                    HttpOnly = true
+                };
+
+                Response.AppendCookie(tokenCookie);
+
                 FormsAuthentication.RedirectFromLoginPage(Email.Text, false);
             }
             else

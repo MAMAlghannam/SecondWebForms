@@ -2,13 +2,33 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ForCSS" runat="server">
     <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+            position: absolute;
+        }
+        /* Track */
+        ::-webkit-scrollbar-track {
+            border-radius: 4px;
+            background: #f1f1f1;
+            position: absolute;
+        }
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background: rgba(136, 136, 136, 0.57);
+        }
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
         .scrollable {
             overflow: hidden;
             overflow-y: auto;
             /*height: 350px;
             width: 250px;*/
             border: 3px solid lightgrey;
-            border-radius: 8px;
+            border-radius: 4px;
         }
 
         .listContainer {
@@ -24,12 +44,14 @@
             list-style-type: none;
             color: rgb(12, 67, 114);
             margin: 0;
-            padding: 0
+            padding: 0;
         }
 
         .listContainer li {
+            margin: 0;
+            padding: 0;
             border: 3px solid rgba(214, 212, 212, 0);
-            border-radius: 4px;
+            transition: 0.2s;
         }
 
         .listContainer li button{
@@ -42,9 +64,11 @@
         }
 
         .listContainer li.selected {
-            background-color: rgba(214, 212, 212, 0.3);
-            border: 3px solid rgb(214, 212, 212);
-            border-radius: 4px;
+            background-color: rgb(30, 109, 177);
+            border-top-right-radius: 13px;
+            border-bottom-right-radius: 13px;
+            /*border: 3px solid rgb(214, 212, 212);*/
+            border: none
         }
         .business-info-container {
             display: flex;
@@ -77,8 +101,12 @@
     <script src="../Scripts/React/react_runner/react.development.js"></script>
     <script src="../Scripts/React/react_runner/react-dom.development.js"></script>
 
+    <%--<script src="../Scripts/React/YelpAPIExplorer.js"></script>--%>
     <%: Scripts.Render("~/Scripts/React_JSX/YelpAPIExplorer.jsx") %>
 
-    <%--<script src="../Scripts/React/YelpAPIExplorer.js"></script>--%>
+    <%--<asp:Literal  runat="server" ID="Literal_YelpAPIExplorerContainer" >
+
+    </asp:Literal>--%>
+
 
 </asp:Content>
